@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_LKAE4G6yEeqj-t1MJbl4Aw" name="StateChart Motor">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_LOgxcG6yEeqj-t1MJbl4Aw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_FBK1EG8YEeqXYbSdc3dvqQ" name="Motor">
+    <region xmi:type="uml:Region" xmi:id="_FzebwG8YEeqXYbSdc3dvqQ" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_qWLjsG8YEeqXYbSdc3dvqQ" name="Allumer" source="_Nlsa4G8YEeqXYbSdc3dvqQ" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_x86EgG8YEeqXYbSdc3dvqQ" name="Accelerer" source="_PtdYoG8YEeqXYbSdc3dvqQ" target="_Rx7x0G8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_zDakIG8ZEeqXYbSdc3dvqQ" name="accelerer"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_1jfwsG8YEeqXYbSdc3dvqQ" name="Avancer" source="_Rx7x0G8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_09Wr0G8aEeqXYbSdc3dvqQ" name="avancer"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_2PVjAG8YEeqXYbSdc3dvqQ" name="Reculer" source="_Rx7x0G8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_5fxuIG8aEeqXYbSdc3dvqQ" name="Reculer"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_2-a2kG8YEeqXYbSdc3dvqQ" name="Ralentir" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_cYT6oG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_DfPn8G8bEeqXYbSdc3dvqQ" name="ralentir"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_3p3nUG8YEeqXYbSdc3dvqQ" name="Ralentir" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_cYT6oG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="__2sM4G8aEeqXYbSdc3dvqQ" name="ralentir"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_6J3e4G8YEeqXYbSdc3dvqQ" source="_da71QG8YEeqXYbSdc3dvqQ" target="_iyAAkG8YEeqXYbSdc3dvqQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_EcwD8G8ZEeqXYbSdc3dvqQ" name="Eteindre" source="_cYT6oG8YEeqXYbSdc3dvqQ" target="_da71QG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_TDUPQG8aEeqXYbSdc3dvqQ" name="eteindre"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_H01aEG8ZEeqXYbSdc3dvqQ" name="Eteindre" source="_PtdYoG8YEeqXYbSdc3dvqQ" target="_da71QG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_Aa7-4G8aEeqXYbSdc3dvqQ" name="eteindre" visibility="public"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_K8cEMG8ZEeqXYbSdc3dvqQ" name="Eteindre" source="_Rx7x0G8YEeqXYbSdc3dvqQ" target="_da71QG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_GjlYIG8aEeqXYbSdc3dvqQ" name="eteindre"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_P8dBcG8ZEeqXYbSdc3dvqQ" name="Eteindre" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_da71QG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_Rmo14G8aEeqXYbSdc3dvqQ" name="eteindre"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_VoEgcG8ZEeqXYbSdc3dvqQ" name="Arreter" source="_cYT6oG8YEeqXYbSdc3dvqQ" target="_PtdYoG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_hXL9gG8aEeqXYbSdc3dvqQ" name="arreter"/>
+      </transition>
+      <transition xmi:type="uml:Transition" xmi:id="_riko4G8ZEeqXYbSdc3dvqQ" name="Eteindre" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_da71QG8YEeqXYbSdc3dvqQ">
+        <trigger xmi:type="uml:Trigger" xmi:id="_VAnCYG8aEeqXYbSdc3dvqQ" name="eteindre"/>
+      </transition>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_Nlsa4G8YEeqXYbSdc3dvqQ" name="Start"/>
+      <subvertex xmi:type="uml:State" xmi:id="_PtdYoG8YEeqXYbSdc3dvqQ" name="Stopped"/>
+      <subvertex xmi:type="uml:State" xmi:id="_Rx7x0G8YEeqXYbSdc3dvqQ" name="Accelerate"/>
+      <subvertex xmi:type="uml:State" xmi:id="_aQHfEG8YEeqXYbSdc3dvqQ" name="MoveForward"/>
+      <subvertex xmi:type="uml:State" xmi:id="_bhiDoG8YEeqXYbSdc3dvqQ" name="MoveBackward"/>
+      <subvertex xmi:type="uml:State" xmi:id="_cYT6oG8YEeqXYbSdc3dvqQ" name="SlowDown"/>
+      <subvertex xmi:type="uml:State" xmi:id="_da71QG8YEeqXYbSdc3dvqQ" name="ShutDown"/>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_iyAAkG8YEeqXYbSdc3dvqQ" name="Final"/>
+    </region>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_T-rWMG8YEeqXYbSdc3dvqQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_T-skUG8YEeqXYbSdc3dvqQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>
