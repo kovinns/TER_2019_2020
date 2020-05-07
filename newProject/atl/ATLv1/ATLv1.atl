@@ -13,7 +13,7 @@ helper context MM!Model def : GenerateJavaCode() : String =
 
 helper context MM!StateMachine def : getRegion(x:MM!StateMachine) : String =
 	let regions : MM!Region = x.region->select(a|a.oclIsTypeOf(MM!Region)) in 
-		 regions->iterate(it; Class_Code: String = ''|Class_Code 
+		 regions->iterate(it; result: String = ''|result 
 	        + it.generateCode(it))
           ;
 
@@ -40,25 +40,25 @@ helper context MM!Region def : generateClasses(x:MM!State) :  String =
 	x->iterate(it; result:String =''| result
 		+ 
 '// Specific class and methods description for the node <' + it.name+'>
-	class ' + it.name + ' extends Node {
+	public class ' + it.name + ' extends Node {
 	
 	  @Override
-	  onEventStart(){
+	  public void onEventStart(){
 	    //TODO : Complete with the code to execute when an event is call on this node
 	  }
 
 	  @Override
-	  onEventDestination(){
+	  public void onEventDestination(){
 	    //TODO : Complete with the code to execute when an event lead to this node
 	  }
 	
 	  @Override
-	  onEntering(){
+	  public void onEntering(){
 	    //TODO : Complete with the code to execute when you enter in this node
 	  }
 	
 	  @Override
-	  onLeaving(){
+	  public void onLeaving(){
 	    //TODO : Complete with the code to execute when you leave this node
 	  }
 	
@@ -68,7 +68,7 @@ helper context MM!Region def : generateClasses(x:MM!State) :  String =
 		;
 
 helper context MM!Region def : generateApplicationClass(x:MM!State) :  String =
-	'class Application{
+	'public class Application{
 
   public static void main(String[] args){
     // Graph initialization

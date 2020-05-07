@@ -2,156 +2,156 @@
  * Automatically generated Java code with ATL 
  */ 
  // Specific class and methods description for the node <Stopped>
-	class Stopped extends Node {
+	public class Stopped extends Node {
 	
 	  @Override
-	  onEventStart(){
+	  public void onEventStart(){
 	    //TODO : Complete with the code to execute when an event is call on this node
 	  }
 
 	  @Override
-	  onEventDestination(){
+	  public void onEventDestination(){
 	    //TODO : Complete with the code to execute when an event lead to this node
 	  }
 	
 	  @Override
-	  onEntering(){
+	  public void onEntering(){
 	    //TODO : Complete with the code to execute when you enter in this node
 	  }
 	
 	  @Override
-	  onLeaving(){
+	  public void onLeaving(){
 	    //TODO : Complete with the code to execute when you leave this node
 	  }
 	
 	}
 
 // Specific class and methods description for the node <Accelerate>
-	class Accelerate extends Node {
+	public class Accelerate extends Node {
 	
 	  @Override
-	  onEventStart(){
+	  public void onEventStart(){
 	    //TODO : Complete with the code to execute when an event is call on this node
 	  }
 
 	  @Override
-	  onEventDestination(){
+	  public void onEventDestination(){
 	    //TODO : Complete with the code to execute when an event lead to this node
 	  }
 	
 	  @Override
-	  onEntering(){
+	  public void onEntering(){
 	    //TODO : Complete with the code to execute when you enter in this node
 	  }
 	
 	  @Override
-	  onLeaving(){
+	  public void onLeaving(){
 	    //TODO : Complete with the code to execute when you leave this node
 	  }
 	
 	}
 
 // Specific class and methods description for the node <MoveForward>
-	class MoveForward extends Node {
+	public class MoveForward extends Node {
 	
 	  @Override
-	  onEventStart(){
+	  public void onEventStart(){
 	    //TODO : Complete with the code to execute when an event is call on this node
 	  }
 
 	  @Override
-	  onEventDestination(){
+	  public void onEventDestination(){
 	    //TODO : Complete with the code to execute when an event lead to this node
 	  }
 	
 	  @Override
-	  onEntering(){
+	  public void onEntering(){
 	    //TODO : Complete with the code to execute when you enter in this node
 	  }
 	
 	  @Override
-	  onLeaving(){
+	  public void onLeaving(){
 	    //TODO : Complete with the code to execute when you leave this node
 	  }
 	
 	}
 
 // Specific class and methods description for the node <MoveBackward>
-	class MoveBackward extends Node {
+	public class MoveBackward extends Node {
 	
 	  @Override
-	  onEventStart(){
+	  public void onEventStart(){
 	    //TODO : Complete with the code to execute when an event is call on this node
 	  }
 
 	  @Override
-	  onEventDestination(){
+	  public void onEventDestination(){
 	    //TODO : Complete with the code to execute when an event lead to this node
 	  }
 	
 	  @Override
-	  onEntering(){
+	  public void onEntering(){
 	    //TODO : Complete with the code to execute when you enter in this node
 	  }
 	
 	  @Override
-	  onLeaving(){
+	  public void onLeaving(){
 	    //TODO : Complete with the code to execute when you leave this node
 	  }
 	
 	}
 
 // Specific class and methods description for the node <SlowDown>
-	class SlowDown extends Node {
+	public class SlowDown extends Node {
 	
 	  @Override
-	  onEventStart(){
+	  public void onEventStart(){
 	    //TODO : Complete with the code to execute when an event is call on this node
 	  }
 
 	  @Override
-	  onEventDestination(){
+	  public void onEventDestination(){
 	    //TODO : Complete with the code to execute when an event lead to this node
 	  }
 	
 	  @Override
-	  onEntering(){
+	  public void onEntering(){
 	    //TODO : Complete with the code to execute when you enter in this node
 	  }
 	
 	  @Override
-	  onLeaving(){
+	  public void onLeaving(){
 	    //TODO : Complete with the code to execute when you leave this node
 	  }
 	
 	}
 
 // Specific class and methods description for the node <ShutDown>
-	class ShutDown extends Node {
+	public class ShutDown extends Node {
 	
 	  @Override
-	  onEventStart(){
+	  public void onEventStart(){
 	    //TODO : Complete with the code to execute when an event is call on this node
 	  }
 
 	  @Override
-	  onEventDestination(){
+	  public void onEventDestination(){
 	    //TODO : Complete with the code to execute when an event lead to this node
 	  }
 	
 	  @Override
-	  onEntering(){
+	  public void onEntering(){
 	    //TODO : Complete with the code to execute when you enter in this node
 	  }
 	
 	  @Override
-	  onLeaving(){
+	  public void onLeaving(){
 	    //TODO : Complete with the code to execute when you leave this node
 	  }
 	
 	}
 
-class Application{
+public class Application{
 
   public static void main(String[] args){
     // Graph initialization
