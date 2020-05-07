@@ -13,18 +13,18 @@
         <region xmi:type="uml:Region" xmi:id="_aaBsIo-dEeqVPbiCy9BBFw" name="Region1">
           <transition xmi:type="uml:Transition" xmi:id="_B8rB4I-cEeqVPbiCy9BBFw" name="Backward" source="_PtdYoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
           <transition xmi:type="uml:Transition" xmi:id="_XdZ_cI-cEeqVPbiCy9BBFw" name="Forward" source="_PtdYoG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_hfju8I-eEeqVPbiCy9BBFw" name="TurnLeft" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_6Bho4I-eEeqVPbiCy9BBFw" name="TurnRight" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_POhyII-fEeqVPbiCy9BBFw" name="TurnLeft" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_ZN168I-fEeqVPbiCy9BBFw" name="TurnRight" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_kmOTAI-gEeqVPbiCy9BBFw" name="Slowdown" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_J59rwI-gEeqVPbiCy9BBFw"/>
-          <transition xmi:type="uml:Transition" xmi:id="_m-i1QI-gEeqVPbiCy9BBFw" name="Output" source="_J59rwI-gEeqVPbiCy9BBFw" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_oCHLEI-gEeqVPbiCy9BBFw" name="Output" source="_J59rwI-gEeqVPbiCy9BBFw" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_9FeQII-gEeqVPbiCy9BBFw" name="Output" source="_eLLiMI-gEeqVPbiCy9BBFw" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_-Ohi4I-gEeqVPbiCy9BBFw" name="Slowdown" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_eLLiMI-gEeqVPbiCy9BBFw"/>
-          <transition xmi:type="uml:Transition" xmi:id="_YJ4RoI-hEeqVPbiCy9BBFw" name="Output" source="_eLLiMI-gEeqVPbiCy9BBFw" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_hfju8I-eEeqVPbiCy9BBFw" name="TurnLeftForward" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_6Bho4I-eEeqVPbiCy9BBFw" name="TurnRightForward" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_POhyII-fEeqVPbiCy9BBFw" name="TurnLeftBackward" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_ZN168I-fEeqVPbiCy9BBFw" name="TurnRightBackward" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_kmOTAI-gEeqVPbiCy9BBFw" name="SlowdownBackward" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_J59rwI-gEeqVPbiCy9BBFw"/>
+          <transition xmi:type="uml:Transition" xmi:id="_m-i1QI-gEeqVPbiCy9BBFw" source="_J59rwI-gEeqVPbiCy9BBFw" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_oCHLEI-gEeqVPbiCy9BBFw" name="BackwardJoinTrue" source="_J59rwI-gEeqVPbiCy9BBFw" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_9FeQII-gEeqVPbiCy9BBFw" source="_eLLiMI-gEeqVPbiCy9BBFw" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_-Ohi4I-gEeqVPbiCy9BBFw" name="SlowdownForward" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_eLLiMI-gEeqVPbiCy9BBFw"/>
+          <transition xmi:type="uml:Transition" xmi:id="_YJ4RoI-hEeqVPbiCy9BBFw" name="ForwardJoinTrue" source="_eLLiMI-gEeqVPbiCy9BBFw" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
           <transition xmi:type="uml:Transition" xmi:id="__Ewx4I-hEeqVPbiCy9BBFw" name="Accelerate" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
-          <transition xmi:type="uml:Transition" xmi:id="_FVnE4I-iEeqVPbiCy9BBFw" name="Accelerate" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_FVnE4I-iEeqVPbiCy9BBFw" name="AccelerateBackward" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
           <subvertex xmi:type="uml:State" xmi:id="_bhiDoG8YEeqXYbSdc3dvqQ" name="MoveBackward">
             <region xmi:type="uml:Region" xmi:id="_aw-T4I-aEeqVPbiCy9BBFw" name="Region1"/>
           </subvertex>
@@ -32,8 +32,8 @@
             <region xmi:type="uml:Region" xmi:id="_dVmMwo-aEeqVPbiCy9BBFw" name="Region1"/>
           </subvertex>
           <subvertex xmi:type="uml:State" xmi:id="_PtdYoG8YEeqXYbSdc3dvqQ" name="Stopped"/>
-          <subvertex xmi:type="uml:Pseudostate" xmi:id="_J59rwI-gEeqVPbiCy9BBFw" kind="choice"/>
-          <subvertex xmi:type="uml:Pseudostate" xmi:id="_eLLiMI-gEeqVPbiCy9BBFw" kind="choice"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_J59rwI-gEeqVPbiCy9BBFw" name="BackwardJoin" kind="choice"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_eLLiMI-gEeqVPbiCy9BBFw" name="ForwardJoin" kind="choice"/>
         </region>
       </subvertex>
       <subvertex xmi:type="uml:FinalState" xmi:id="_BfwKcI-eEeqVPbiCy9BBFw" name="Stop"/>
