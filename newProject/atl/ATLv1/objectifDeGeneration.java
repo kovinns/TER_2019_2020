@@ -1,97 +1,210 @@
-// Event corresponding to "Allumer"
-class AllumerEvent extends Event {
-  public AllumerEvent() {
-    super("Allumer");
-  }
-}
+/* 
+ * Automatically generated Java code with ATL 
+ */ 
+ // Specific class and methods description for the node <Stopped>
+	class Stopped extends Node {
+	
+	  @Override
+	  onEventStart(){
+	    //TODO : Complete with the code to execute when an event is call on this node
+	  }
 
-// Event corresponding to "Eteindre"
-class EteindreEvent extends Event {
-  public EteindreEvent() {
-    super("Eteindre");
-  }
-}
+	  @Override
+	  onEventDestination(){
+	    //TODO : Complete with the code to execute when an event lead to this node
+	  }
+	
+	  @Override
+	  onEntering(){
+	    //TODO : Complete with the code to execute when you enter in this node
+	  }
+	
+	  @Override
+	  onLeaving(){
+	    //TODO : Complete with the code to execute when you leave this node
+	  }
+	
+	}
 
-// Event corresponding to "Avancer"
-class AvancerEvent extends Event {
-  public AvancerEvent() {
-    super("Avancer");
-  }
-}
+// Specific class and methods description for the node <Accelerate>
+	class Accelerate extends Node {
+	
+	  @Override
+	  onEventStart(){
+	    //TODO : Complete with the code to execute when an event is call on this node
+	  }
 
-// Event corresponding to "Reculer"
-class ReculerEvent extends Event {
-  public ReculerEvent() {
-    super("Reculer");
-  }
-}
+	  @Override
+	  onEventDestination(){
+	    //TODO : Complete with the code to execute when an event lead to this node
+	  }
+	
+	  @Override
+	  onEntering(){
+	    //TODO : Complete with the code to execute when you enter in this node
+	  }
+	
+	  @Override
+	  onLeaving(){
+	    //TODO : Complete with the code to execute when you leave this node
+	  }
+	
+	}
 
-// Event corresponding to "Accelerer"
-class AccelererEvent extends Event {
-  public AccelererEvent() {
-    super("Accelerer");
-  }
-}
+// Specific class and methods description for the node <MoveForward>
+	class MoveForward extends Node {
+	
+	  @Override
+	  onEventStart(){
+	    //TODO : Complete with the code to execute when an event is call on this node
+	  }
 
-// Event corresponding to "Ralentir"
-class RalentirEvent extends Event {
-  public RalentirEvent() {
-    super("Ralentir");
-  }
-}
+	  @Override
+	  onEventDestination(){
+	    //TODO : Complete with the code to execute when an event lead to this node
+	  }
+	
+	  @Override
+	  onEntering(){
+	    //TODO : Complete with the code to execute when you enter in this node
+	  }
+	
+	  @Override
+	  onLeaving(){
+	    //TODO : Complete with the code to execute when you leave this node
+	  }
+	
+	}
 
-// Event corresponding to "Arreter"
-class ArreterEvent extends Event {
-  public ArreterEvent() {
-    super("Arreter");
-  }
-}
+// Specific class and methods description for the node <MoveBackward>
+	class MoveBackward extends Node {
+	
+	  @Override
+	  onEventStart(){
+	    //TODO : Complete with the code to execute when an event is call on this node
+	  }
 
-public class Application{
+	  @Override
+	  onEventDestination(){
+	    //TODO : Complete with the code to execute when an event lead to this node
+	  }
+	
+	  @Override
+	  onEntering(){
+	    //TODO : Complete with the code to execute when you enter in this node
+	  }
+	
+	  @Override
+	  onLeaving(){
+	    //TODO : Complete with the code to execute when you leave this node
+	  }
+	
+	}
+
+// Specific class and methods description for the node <SlowDown>
+	class SlowDown extends Node {
+	
+	  @Override
+	  onEventStart(){
+	    //TODO : Complete with the code to execute when an event is call on this node
+	  }
+
+	  @Override
+	  onEventDestination(){
+	    //TODO : Complete with the code to execute when an event lead to this node
+	  }
+	
+	  @Override
+	  onEntering(){
+	    //TODO : Complete with the code to execute when you enter in this node
+	  }
+	
+	  @Override
+	  onLeaving(){
+	    //TODO : Complete with the code to execute when you leave this node
+	  }
+	
+	}
+
+// Specific class and methods description for the node <ShutDown>
+	class ShutDown extends Node {
+	
+	  @Override
+	  onEventStart(){
+	    //TODO : Complete with the code to execute when an event is call on this node
+	  }
+
+	  @Override
+	  onEventDestination(){
+	    //TODO : Complete with the code to execute when an event lead to this node
+	  }
+	
+	  @Override
+	  onEntering(){
+	    //TODO : Complete with the code to execute when you enter in this node
+	  }
+	
+	  @Override
+	  onLeaving(){
+	    //TODO : Complete with the code to execute when you leave this node
+	  }
+	
+	}
+
+class Application{
 
   public static void main(String[] args){
+    // Graph initialization
+    Graph graph = new Graph();
 
-    // Statechart initialisation
-    Statechart statechart = new Statechart();
+    // Nodes initionazation and adding to the graph
+Stopped stopped = new Stopped();
+graph.addNode(stopped);
 
-    // Start and final states creation
-    PseudoState startState = new PseudoState("Start", statechart, PseudoState.pseudostate_start);
-    FinalState finalState = new FinalState("Final", statechart);
+Accelerate accelerate = new Accelerate();
+graph.addNode(accelerate);
 
-    // States creation
-    State stoppedState = new State("Stopped", statechart);
-    State accelerateState = new State("Accelerate", statechart);
-    State moveFowardState = new State("MoveFoward", statechart);
-    State moveBackwardState = new State("MoveBackward", statechart);
-    State slowDownState = new State("SlowDown", statechart);
-    State shutDownState = new State("Shutdown", statechart);
+MoveForward moveforward = new MoveForward();
+graph.addNode(moveforward);
 
-    // Transitions from state "Start"
-    new Transition(startState, stoppedState, AllumerEvent);
+MoveBackward movebackward = new MoveBackward();
+graph.addNode(movebackward);
 
-    // Transitions from state "Stopped"
-    new Transition(stoppedState, accelerateState, AccelererEvent);
-    new Transition(stoppedState, shutDownState, EteindreEvent);
+SlowDown slowdown = new SlowDown();
+graph.addNode(slowdown);
 
-    // Transitions from state "Accelerate"
-    new Transition(accelerateState, moveFowardState, AvancerEvent);
-    new Transition(accelerateState, moveBackwardState, ReculerEvent);
-    new Transition(accelerateState, shutDownState, EteindreEvent);
+ShutDown shutdown = new ShutDown();
+graph.addNode(shutdown);
 
-    // Transitions from state "MoveFoward"
-    new Transition(moveFowardState, slowDownState, RalentirEvent);
-    new Transition(moveFowardState, shutDownState, EteindreEvent);
 
-    // Transitions from state "MoveBackward"
-    new Transition(moveBackwardState, slowDownState, RalentirEvent);
-    new Transition(moveBackwardState, shutDownState, EteindreEvent);
 
-    // Transitions from state "SlowDown"
-    new Transition(slowDownState, stoppedState, ArreterEvent);
-    new Transition(slowDownState, shutDownState, EteindreEvent);
+    // Set starting and ending nodes of the graph
+    graph.setStartingNode(stopped);
+    graph.addEndingNode(shutDown);
 
-    // Transitions from state "Shutdown"
-    new Transition(shutDownState, finalState);
+    // All posible switch from the node <stopped>
+    graph.addSwitch(stopped, accelerate, "Accelerer");
+    graph.addSwitch(stopped, shutDown, "Eteindre");
+
+    // All posible switch from the node <accelerate>
+    graph.addSwitch(accelerate, moveFoward, "Avancer");
+    graph.addSwitch(accelerate, moveBackward, "Reculer");
+    graph.addSwitch(accelerate, shutDown, "Eteindre");
+
+    // All posible switch from the node <moveFoward>
+    graph.addSwitch(moveFoward, slowDown, "Ralentir");
+    graph.addSwitch(moveFoward, shutDown, "Eteindre");
+
+    // All posible switch from the node <moveBackward>
+    graph.addSwitch(moveBackward, slowDown, "Ralentir");
+    graph.addSwitch(moveBackward, shutDown, "Eteindre");
+
+    // All posible switch from the node <SlowDown>
+    graph.addSwitch(slowDown, stopped, "Arreter");
+    graph.addSwitch(slowDown, shutDown, "Eteindre");
+
+    // AFter graph initialization, run the graph execution
+    graph.run();
 
   }
 
