@@ -1,8 +1,7 @@
 query Script = MM!Model->allInstances()->asSequence().first().GenerateJavaCode().writeTo('/ATLv1/JavaTargetModels/main.java');
 
-							
+--Dans le modele, on récupère toutes les instances de State Machine, et on itère dessus en appliquant une méthode à chaque State Machine trouvé						
 helper context MM!Model def : GenerateJavaCode() : String = 
-	
 	  let  stateMachines : MM!StateMachine = MM!StateMachine.allInstances() in
 	     '/* \n'+
 		 ' * Automatically generated Java code with ATL \n'+
@@ -11,6 +10,7 @@ helper context MM!Model def : GenerateJavaCode() : String =
 	        + it.getRegion(it))
           ;
 
+--Dans le State Machine, on récupère toutes les régions et on itère dessus en appelant la méthode de génération de code correspondante
 helper context MM!StateMachine def : getRegion(x:MM!StateMachine) : String =
 	let regions : MM!Region = x.region->select(a|a.oclIsTypeOf(MM!Region)) in 
 		 regions->iterate(it; result: String = ''|result 
@@ -44,12 +44,12 @@ helper context MM!Region def : generateClasses(x:MM!State) :  String =
 	
 	  @Override
 	  public void onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
+	    //TODO : Complete with the code to execute when an event is called on this node
 	  }
 
 	  @Override
 	  public void onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
+	    //TODO : Complete with the code to execute when an event leads to this node
 	  }
 	
 	  @Override

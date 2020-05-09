@@ -6,12 +6,12 @@
 	
 	  @Override
 	  public void onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
+	    //TODO : Complete with the code to execute when an event is called on this node
 	  }
 
 	  @Override
 	  public void onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
+	    //TODO : Complete with the code to execute when an event leads to this node
 	  }
 	
 	  @Override
@@ -31,12 +31,12 @@
 	
 	  @Override
 	  public void onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
+	    //TODO : Complete with the code to execute when an event is called on this node
 	  }
 
 	  @Override
 	  public void onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
+	    //TODO : Complete with the code to execute when an event leads to this node
 	  }
 	
 	  @Override
@@ -56,12 +56,12 @@
 	
 	  @Override
 	  public void onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
+	    //TODO : Complete with the code to execute when an event is called on this node
 	  }
 
 	  @Override
 	  public void onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
+	    //TODO : Complete with the code to execute when an event leads to this node
 	  }
 	
 	  @Override
@@ -81,12 +81,12 @@
 	
 	  @Override
 	  public void onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
+	    //TODO : Complete with the code to execute when an event is called on this node
 	  }
 
 	  @Override
 	  public void onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
+	    //TODO : Complete with the code to execute when an event leads to this node
 	  }
 	
 	  @Override
@@ -106,12 +106,12 @@
 	
 	  @Override
 	  public void onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
+	    //TODO : Complete with the code to execute when an event is called on this node
 	  }
 
 	  @Override
 	  public void onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
+	    //TODO : Complete with the code to execute when an event leads to this node
 	  }
 	
 	  @Override
@@ -131,12 +131,12 @@
 	
 	  @Override
 	  public void onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
+	    //TODO : Complete with the code to execute when an event is called on this node
 	  }
 
 	  @Override
 	  public void onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
+	    //TODO : Complete with the code to execute when an event leads to this node
 	  }
 	
 	  @Override

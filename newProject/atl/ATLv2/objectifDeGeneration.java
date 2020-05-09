@@ -1,50 +1,50 @@
 // Event creation
 
 // Event corresponding to "Forward"
-class ForwardEvent extends Event {
-  public ForwardEvent() {
+public class ForwardEvent extends Event {
+  public void ForwardEvent() {
     super("Forward");
   }
 }
 
 // Event corresponding to "Backward"
-class BackwardEvent extends Event {
-  public BackwardEvent() {
+public class BackwardEvent extends Event {
+  public void BackwardEvent() {
     super("Backward");
   }
 }
 
 // Event corresponding to "Accelerate"
-class AccelerateEvent extends Event {
-  public AccelerateEvent() {
+public class AccelerateEvent extends Event {
+  public void AccelerateEvent() {
     super("Accelerate");
   }
 }
 
 // Event corresponding to "Solwdown"
-class SolwdownEvent extends Event {
-  public SolwdownEvent() {
+public class SolwdownEvent extends Event {
+  public void SolwdownEvent() {
     super("Solwdown");
   }
 }
 
 // Event corresponding to "TurnLeft"
-class TurnLeftEvent extends Event {
-  public TurnLeftEvent() {
+public class TurnLeftEvent extends Event {
+  public void TurnLeftEvent() {
     super("TurnLeft");
   }
 }
 
 // Event corresponding to "TurnRight"
-class TurnRightEvent extends Event {
-  public TurnRightEvent() {
+public class TurnRightEvent extends Event {
+  public void TurnRightEvent() {
     super("TurnRight");
   }
 }
 
 // Event corresponding to "Shutdown"
-class ShutdownEvent extends Event {
-  public ShutdownEvent() {
+public class ShutdownEvent extends Event {
+  public void ShutdownEvent() {
     super("Shutdown");
   }
 }
@@ -56,7 +56,7 @@ class ShutdownEvent extends Event {
 public class SetSpeed extends Action {
   private int value;
 
-  public SetSpeed(int value) {
+  public void SetSpeed(int value) {
     this.value = value;
   }
 
