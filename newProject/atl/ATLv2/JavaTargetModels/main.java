@@ -1,62 +1,84 @@
 /* 
  * Automatically generated Java code with ATL 
  */ 
- // Event corresponding to "Shutdown
- public class ShutdownEvent extends Event { 
- public ShutdownEvent() { 
- super("Shutdown");
-	  }
-	}// Event corresponding to "Backward
- public class BackwardEvent extends Event { 
- public BackwardEvent() { 
- super("Backward");
-					  }
-					}// Event corresponding to "Forward
- public class ForwardEvent extends Event { 
- public ForwardEvent() { 
- super("Forward");
-					  }
-					}// Event corresponding to "TurnLeftForward
- public class TurnLeftForwardEvent extends Event { 
- public TurnLeftForwardEvent() { 
- super("TurnLeftForward");
-					  }
-					}// Event corresponding to "TurnRightForward
- public class TurnRightForwardEvent extends Event { 
- public TurnRightForwardEvent() { 
- super("TurnRightForward");
-					  }
-					}// Event corresponding to "TurnLeftBackward
- public class TurnLeftBackwardEvent extends Event { 
- public TurnLeftBackwardEvent() { 
- super("TurnLeftBackward");
-					  }
-					}// Event corresponding to "TurnRightBackward
- public class TurnRightBackwardEvent extends Event { 
- public TurnRightBackwardEvent() { 
- super("TurnRightBackward");
-					  }
-					}// Event corresponding to "SlowdownBackward
- public class SlowdownBackwardEvent extends Event { 
- public SlowdownBackwardEvent() { 
- super("SlowdownBackward");
-					  }
-					}// Event corresponding to "SlowdownForward
- public class SlowdownForwardEvent extends Event { 
- public SlowdownForwardEvent() { 
- super("SlowdownForward");
-					  }
-					}// Event corresponding to "Accelerate
- public class AccelerateEvent extends Event { 
- public AccelerateEvent() { 
- super("Accelerate");
-					  }
-					}// Event corresponding to "AccelerateBackward
- public class AccelerateBackwardEvent extends Event { 
- public AccelerateBackwardEvent() { 
- super("AccelerateBackward");
-					  }
-					}
+ 
+// Event corresponding to "Shutdown"
+	 public class ShutdownEvent extends Event {
+			public ShutdownEvent() {
+	 			super("Shutdown");
+	 	}
+	}
+
+// Event corresponding to "Backward"
+	 public class BackwardEvent extends Event {
+			public BackwardEvent() {
+	 			super("Backward");
+	 	}
+	}
+
+// Event corresponding to "Forward"
+	 public class ForwardEvent extends Event {
+			public ForwardEvent() {
+	 			super("Forward");
+	 	}
+	}
+
+// Event corresponding to "TurnLeftForward"
+	 public class TurnLeftForwardEvent extends Event {
+			public TurnLeftForwardEvent() {
+	 			super("TurnLeftForward");
+	 	}
+	}
+
+// Event corresponding to "TurnRightForward"
+	 public class TurnRightForwardEvent extends Event {
+			public TurnRightForwardEvent() {
+	 			super("TurnRightForward");
+	 	}
+	}
+
+// Event corresponding to "TurnLeftBackward"
+	 public class TurnLeftBackwardEvent extends Event {
+			public TurnLeftBackwardEvent() {
+	 			super("TurnLeftBackward");
+	 	}
+	}
+
+// Event corresponding to "TurnRightBackward"
+	 public class TurnRightBackwardEvent extends Event {
+			public TurnRightBackwardEvent() {
+	 			super("TurnRightBackward");
+	 	}
+	}
+
+// Event corresponding to "SlowdownBackward"
+	 public class SlowdownBackwardEvent extends Event {
+			public SlowdownBackwardEvent() {
+	 			super("SlowdownBackward");
+	 	}
+	}
+
+// Event corresponding to "SlowdownForward"
+	 public class SlowdownForwardEvent extends Event {
+			public SlowdownForwardEvent() {
+	 			super("SlowdownForward");
+	 	}
+	}
+
+// Event corresponding to "Accelerate"
+	 public class AccelerateEvent extends Event {
+			public AccelerateEvent() {
+	 			super("Accelerate");
+	 	}
+	}
+
+// Event corresponding to "AccelerateBackward"
+	 public class AccelerateBackwardEvent extends Event {
+			public AccelerateBackwardEvent() {
+	 			super("AccelerateBackward");
+	 	}
+	}
+
 // Action creation
 
 // Action corresponding to "setSpeed(...)"
@@ -141,3 +163,5 @@ public class Application{
     State stoppedState = new State("Stopped", initialState);
     PseudoState backwardjoinPseudoState = new State("BackwardJoin", initialState);
     PseudoState forwardjoinPseudoState = new State("ForwardJoin", initialState);
+	}
+}

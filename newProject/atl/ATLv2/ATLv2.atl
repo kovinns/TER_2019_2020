@@ -34,15 +34,21 @@ helper context MM!Region def : generateCode(x:MM!Region) : String =
 		+ x.generateFinalState(finals)
 		+ x.generateState(stateRegion)
 		+ x.generateAllStates(stateRegion->first())
+		+
+'	}
+}'
 		;
 	
 helper context MM!Region def :  generateFirstTransition(x:MM!Transition) : String = 
 	x->iterate(it; result: String = ''|result
 		+ if(it.name.toString()<>'OclUndefined') then 
-'// Event corresponding to "' + it.name +
-	'\n public class '+it.name+'Event extends Event { \n public '+it.name+'Event() { \n super("'+it.name+'");
-	  }
-	}'
+'\n// Event corresponding to "' + it.name + '"
+	 public class '+it.name+'Event extends Event {
+			public '+it.name+'Event() {
+	 			super("'+it.name+'");
+	 	}
+	}
+'
 		else '' 
 		endif
 	);
@@ -66,10 +72,13 @@ helper context MM!Region def : generateTransitions(x:MM!Transition, y:MM!Pseudos
 		x->iterate(it; result: String = ''|result
 		+if(it.name.toString()<>'OclUndefined') then 
 			if(it.source.oclIsTypeOf(MM!Pseudostate)=false) then
-				'// Event corresponding to "' + it.name +
-					'\n public class '+it.name+'Event extends Event { \n public '+it.name+'Event() { \n super("'+it.name+'");
-					  }
-					}'
+'\n// Event corresponding to "' + it.name + '"
+	 public class '+it.name+'Event extends Event {
+			public '+it.name+'Event() {
+	 			super("'+it.name+'");
+	 	}
+	}
+'
 			else '' 
 			endif
 		else ''
@@ -206,121 +215,4 @@ helper context MM!Region def : generatePseudoStates(x:MM!State) : String =
 		+'    PseudoState '+it.name.toLowerCase()+'PseudoState = new State("'+it.name+'", initialState);\n'
 		);
 
-
-
-		
-	
-	
-
-helper context MM!Region def : generateClasses2(x:MM!State) :  String = 
-	x->iterate(it; result:String =''| result
-		+ 
-'// Specific class and methods description for the node <' + it.name+'>
-	class ' + it.name + ' extends Node {
-	
-	  @Override
-	  onEventStart(){
-	    //TODO : Complete with the code to execute when an event is call on this node
-	  }
-
-	  @Override
-	  onEventDestination(){
-	    //TODO : Complete with the code to execute when an event lead to this node
-	  }
-	
-	  @Override
-	  onEntering(){
-	    //TODO : Complete with the code to execute when you enter in this node
-	  }
-	
-	  @Override
-	  onLeaving(){
-	    //TODO : Complete with the code to execute when you leave this node
-	  }
-	
-	}\n\n'		
-		
-		)
-		;
-
-helper context MM!Region def : generateApplicationClass(x:MM!State) :  String =
-	'class Application{
-
-  public static void main(String[] args){
-    // Graph initialization
-    Graph graph = new Graph();
-
-    // Nodes initionazation and adding to the graph\n'
-	+ x->iterate(it; result:String =''| result
-		+ it.name
-		+ ' '
-		+ it.name.toLowerCase()
-		+ ' = new '
-		+ it.name
-		+'();\n'
-		+ 'graph.addNode('
-		+ it.name.toLowerCase()
-		+ ');\n\n'
-	);
-
-
-helper context MM!Region def : generateInitial(x:MM!Pseudostate, trans:MM!Transition, states:MM!State) :  String =
-	'// Set starting nodes of the graph\n'
-	+
-	x->iterate(it; result: String = ''|result
-		+trans->iterate(its; results: String = ''|results
-			+''
-			+ if(its.source=it) then 
-				states->select(a|a=its.target)->iterate(itp; resultp: String = ''|resultp
-					+'graph.setStartingNode('
-					+ itp.name
-					+ ');\n\n'
-					)
-			else '' 
-			endif
-		)
-	);
-
-helper context MM!Region def : generateFinal(x:MM!FinalState, trans:MM!Transition, states:MM!State) :  String =
-	'// Set ending nodes of the graph\n'
-	+
-	x->iterate(it; result: String = ''|result
-		+trans->iterate(its; results: String = ''|results
-			+''
-			+ if(its.target=it) then 
-				states->select(a|a=its.source)->iterate(itp; resultp: String = ''|resultp
-					+'graph.setEndingNode('
-					+ itp.name
-					+ ');\n\n'
-					)
-			else '' 
-			endif
-		)
-	);
-		
-
-
-
-helper context MM!Region def :  generateTransitions2(x:MM!Transition) : String = 
-	'//Set the transitions\n'
-	+
-	x->iterate(it; result: String = ''|result
-		+ '' + 
-		if(it.toString()<>'OclUndefined') then 
-			if(it.source.oclIsTypeOf(MM!Pseudostate)=false) then
-				if(it.target.oclIsTypeOf(MM!FinalState)=false) then
-    				'graph.addSwitch('
-    				+it.source.name
-					+', '
-					+it.target.name
-					+', "'
-					+it.name
-					+'");\n'
-				else '' 
-				endif
-			else '' 
-			endif
-		else '' 
-		endif
-	);
 			
