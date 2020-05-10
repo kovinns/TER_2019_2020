@@ -94,35 +94,35 @@ public class SetSpeed extends Action {
   }
 }
 
-// Acction corresponding to "increaseSpeed()"
+// Action corresponding to "increaseSpeed()"
 public class IncreaseSpeed extends Action {
   public void execute(Metadata data, Parameter parameter) {
     //TODO: complete this function
   }
 }
 
-// Acction corresponding to "decreaseSpeed()"
+// Action corresponding to "decreaseSpeed()"
 public class DecreaseSpeed extends Action {
   public void execute(Metadata data, Parameter parameter) {
     //TODO: complete this function
   }
 }
 
-// Acction corresponding to "rotateleft()"
+// Action corresponding to "rotateleft()"
 public class Rotateleft extends Action {
   public void execute(Metadata data, Parameter parameter) {
     //TODO: complete this function
   }
 }
 
-// Acction corresponding to "rotateright()"
+// Action corresponding to "rotateright()"
 public class Rotateright extends Action {
   public void execute(Metadata data, Parameter parameter) {
     //TODO: complete this function
   }
 }
 
-// Acction corresponding to "shutdown()"
+// Action corresponding to "shutdown()"
 public class Shutdown extends Action {
   public void execute(Metadata data, Parameter parameter) {
     //TODO: complete this function
@@ -163,5 +163,39 @@ public class Application{
     State stoppedState = new State("Stopped", initialState);
     PseudoState backwardjoinPseudoState = new State("BackwardJoin", initialState);
     PseudoState forwardjoinPseudoState = new State("ForwardJoin", initialState);
+
+    // Transitions from state "Start"
+    new Transition(startState, stoppedState);
+
+    // Transitions from state "Initial"
+    new Transition(initialState, stoppedState, new ShutdownEvent(), new Shutdown());
+
+    // Transitions from state "Stopped"
+    new Transition(stoppedState, moveFowardState, new ForwardEvent(), new SetSpeed(1));
+    new Transition(stoppedState, moveBackwardState, new BackwardEvent(), new SetSpeed(-1));
+
+    // Transitions from state "MoveFoward"
+    new Transition(moveFowardState, moveFowardState, new TurnLeftEvent(), new Rotateleft());
+    new Transition(moveFowardState, moveFowardState, new TurnRightEvent(), new Rotateright());
+    new Transition(moveFowardState, moveFowardState, new Accelerate(), new IncreaseSpeed());
+    new Transition(moveFowardState, forwardJoinState, new SolwdownEvent(), new DecreaseSpeed());
+
+    // Transitions from state "MoveBackward"
+    new Transition(moveBackwardState, moveBackwardState, new TurnLeftEvent(), new Rotateleft());
+    new Transition(moveBackwardState, moveBackwardState, new TurnRightEvent(), new Rotateright());
+    new Transition(moveBackwardState, moveBackwardState, new Accelerate(), new DecreaseSpeed());
+    new Transition(moveBackwardState, backwardJoinState, new SolwdownEvent(), new IncreaseSpeed());
+
+    // Transitions from state "forwardJoinState"
+    new Transition(forwardJoinState, stoppedState, new SpeedEquals(0));
+    new Transition(forwardJoinState, moveFowardState);
+
+    // Transitions from state "backwardJoinState"
+    new Transition(backwardJoinState, stoppedState, new SpeedEquals(0));
+    new Transition(backwardJoinState, moveBackwardState);
+
+	//Run the statechart
+    MyMetadata myMetadata = new MyMetadata();
+    chart.start(myMetadata);
 	}
 }

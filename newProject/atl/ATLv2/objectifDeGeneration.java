@@ -107,7 +107,7 @@ public class Shutdown extends Action {
 public class SpeedEquals extends Guard {
   private int value;
 
-  public SpeedEquals(int value) {
+  public void SpeedEquals(int value) {
    this.value = value;
   }
 
