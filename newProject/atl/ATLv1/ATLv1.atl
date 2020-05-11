@@ -17,6 +17,7 @@ helper context MM!StateMachine def : getRegion(x:MM!StateMachine) : String =
 	        + it.generateCode(it))
           ;
 
+--Methode recuperant toutes les informations necessaires à la generation de code et appelant les methodes en passant en parmaetre les informations utiles (etats, transitions,...)
 helper context MM!Region def : generateCode(x:MM!Region) : String = 
 	let states : MM!State = x.subvertex->select(a|a.oclIsTypeOf(MM!State)) in
 	let initials : MM!Pseudostate = x.subvertex->select(a|a.oclIsTypeOf(MM!Pseudostate)) in
@@ -36,6 +37,8 @@ helper context MM!Region def : generateCode(x:MM!Region) : String =
 }'
 		;
 
+
+--Generation des classes pour chaque état
 helper context MM!Region def : generateClasses(x:MM!State) :  String = 
 	x->iterate(it; result:String =''| result
 		+ 
@@ -67,6 +70,7 @@ helper context MM!Region def : generateClasses(x:MM!State) :  String =
 		)
 		;
 
+--Generation de la classe application
 helper context MM!Region def : generateApplicationClass(x:MM!State) :  String =
 	'public class Application{
 
@@ -87,7 +91,7 @@ helper context MM!Region def : generateApplicationClass(x:MM!State) :  String =
 		+ ');\n\n'
 	);
 
-
+--Generation du noeud initial du graphe
 helper context MM!Region def : generateInitial(x:MM!Pseudostate, trans:MM!Transition, states:MM!State) :  String =
 	'// Set starting nodes of the graph\n'
 	+
@@ -105,6 +109,7 @@ helper context MM!Region def : generateInitial(x:MM!Pseudostate, trans:MM!Transi
 		)
 	);
 
+--Generation du noeud final du graphe
 helper context MM!Region def : generateFinal(x:MM!FinalState, trans:MM!Transition, states:MM!State) :  String =
 	'// Set ending nodes of the graph\n'
 	+
@@ -124,7 +129,7 @@ helper context MM!Region def : generateFinal(x:MM!FinalState, trans:MM!Transitio
 		
 
 
-
+--Generation des transitions du graphe
 helper context MM!Region def :  generateTransitions(x:MM!Transition) : String = 
 	'//Set the transitions\n'
 	+
