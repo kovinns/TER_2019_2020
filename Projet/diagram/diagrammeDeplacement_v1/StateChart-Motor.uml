@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_LKAE4G6yEeqj-t1MJbl4Aw" name="StateChart Motor">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_LOgxcG6yEeqj-t1MJbl4Aw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_FBK1EG8YEeqXYbSdc3dvqQ" name="Motor">
+    <region xmi:type="uml:Region" xmi:id="_FzebwG8YEeqXYbSdc3dvqQ" name="Region1">
+      <transition xmi:type="uml:Transition" xmi:id="_vQdIcI-dEeqVPbiCy9BBFw" source="_Nlsa4G8YEeqXYbSdc3dvqQ" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
+      <transition xmi:type="uml:Transition" xmi:id="_EKJ7MI-eEeqVPbiCy9BBFw" name="Shutdown" source="_Y5jX4I-dEeqVPbiCy9BBFw" target="_BfwKcI-eEeqVPbiCy9BBFw"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_Nlsa4G8YEeqXYbSdc3dvqQ" name="Start"/>
+      <subvertex xmi:type="uml:State" xmi:id="_Y5jX4I-dEeqVPbiCy9BBFw" name="Initial">
+        <entry xmi:type="uml:FunctionBehavior" xmi:id="_9ncX8I-kEeqVPbiCy9BBFw" name="setSpeed(0)"/>
+        <region xmi:type="uml:Region" xmi:id="_aaBsIo-dEeqVPbiCy9BBFw" name="Region1">
+          <transition xmi:type="uml:Transition" xmi:id="_B8rB4I-cEeqVPbiCy9BBFw" name="Backward" source="_PtdYoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_XdZ_cI-cEeqVPbiCy9BBFw" name="Forward" source="_PtdYoG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_hfju8I-eEeqVPbiCy9BBFw" name="TurnLeft" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_6Bho4I-eEeqVPbiCy9BBFw" name="TurnRight" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_POhyII-fEeqVPbiCy9BBFw" name="TurnLeft" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_ZN168I-fEeqVPbiCy9BBFw" name="TurnRight" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_kmOTAI-gEeqVPbiCy9BBFw" name="Slowdown" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_J59rwI-gEeqVPbiCy9BBFw"/>
+          <transition xmi:type="uml:Transition" xmi:id="_m-i1QI-gEeqVPbiCy9BBFw" name="Output" source="_J59rwI-gEeqVPbiCy9BBFw" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_oCHLEI-gEeqVPbiCy9BBFw" name="Output" source="_J59rwI-gEeqVPbiCy9BBFw" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_9FeQII-gEeqVPbiCy9BBFw" name="Output" source="_eLLiMI-gEeqVPbiCy9BBFw" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_-Ohi4I-gEeqVPbiCy9BBFw" name="Slowdown" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_eLLiMI-gEeqVPbiCy9BBFw"/>
+          <transition xmi:type="uml:Transition" xmi:id="_YJ4RoI-hEeqVPbiCy9BBFw" name="Output" source="_eLLiMI-gEeqVPbiCy9BBFw" target="_PtdYoG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="__Ewx4I-hEeqVPbiCy9BBFw" name="Accelerate" source="_aQHfEG8YEeqXYbSdc3dvqQ" target="_aQHfEG8YEeqXYbSdc3dvqQ"/>
+          <transition xmi:type="uml:Transition" xmi:id="_FVnE4I-iEeqVPbiCy9BBFw" name="Accelerate" source="_bhiDoG8YEeqXYbSdc3dvqQ" target="_bhiDoG8YEeqXYbSdc3dvqQ"/>
+          <subvertex xmi:type="uml:State" xmi:id="_bhiDoG8YEeqXYbSdc3dvqQ" name="MoveBackward">
+            <region xmi:type="uml:Region" xmi:id="_aw-T4I-aEeqVPbiCy9BBFw" name="Region1"/>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_aQHfEG8YEeqXYbSdc3dvqQ" name="MoveForward">
+            <region xmi:type="uml:Region" xmi:id="_dVmMwo-aEeqVPbiCy9BBFw" name="Region1"/>
+          </subvertex>
+          <subvertex xmi:type="uml:State" xmi:id="_PtdYoG8YEeqXYbSdc3dvqQ" name="Stopped"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_J59rwI-gEeqVPbiCy9BBFw" kind="choice"/>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_eLLiMI-gEeqVPbiCy9BBFw" kind="choice"/>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:FinalState" xmi:id="_BfwKcI-eEeqVPbiCy9BBFw" name="Stop"/>
+    </region>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_T-rWMG8YEeqXYbSdc3dvqQ">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_T-skUG8YEeqXYbSdc3dvqQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>

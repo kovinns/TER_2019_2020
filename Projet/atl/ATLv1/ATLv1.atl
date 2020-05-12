@@ -1,0 +1,155 @@
+query Script = MM!Model->allInstances()->asSequence().first().GenerateJavaCode().writeTo('/ATLv1/JavaTargetModels/main.java');
+
+--Dans le modele, on récupère toutes les instances de State Machine, et on itère dessus en appliquant une méthode à chaque State Machine trouvé						
+helper context MM!Model def : GenerateJavaCode() : String = 
+	  let  stateMachines : MM!StateMachine = MM!StateMachine.allInstances() in
+	     '/* \n'+
+		 ' * Automatically generated Java code with ATL \n'+
+		 ' */ \n'+
+		 stateMachines->iterate(it; Class_Code: String = ''|Class_Code 
+	        + it.getRegion(it))
+          ;
+
+--Dans le State Machine, on récupère toutes les régions et on itère dessus en appelant la méthode de génération de code correspondante
+helper context MM!StateMachine def : getRegion(x:MM!StateMachine) : String =
+	let regions : MM!Region = x.region->select(a|a.oclIsTypeOf(MM!Region)) in 
+		 regions->iterate(it; result: String = ''|result 
+	        + it.generateCode(it))
+          ;
+
+--Methode recuperant toutes les informations necessaires à la generation de code et appelant les methodes en passant en parmaetre les informations utiles (etats, transitions,...)
+helper context MM!Region def : generateCode(x:MM!Region) : String = 
+	let states : MM!State = x.subvertex->select(a|a.oclIsTypeOf(MM!State)) in
+	let initials : MM!Pseudostate = x.subvertex->select(a|a.oclIsTypeOf(MM!Pseudostate)) in
+	let finals : MM!FinalState = x.subvertex->select(a|a.oclIsTypeOf(MM!FinalState)) in
+	let transitions : MM!Transition = x.transition->select(a|a.oclIsTypeOf(MM!Transition)) in 
+	
+		' ' 
+		+ x.generateClasses(states)
+		+ x.generateApplicationClass(states)
+		+ x.generateInitial(initials,transitions,states)
+		+ x.generateFinal(finals,transitions,states)
+		+ x.generateTransitions(transitions)
+		+ '
+    // After graph initialization, run the graph execution
+    graph.run();
+	}
+}'
+		;
+
+
+--Generation des classes pour chaque état
+helper context MM!Region def : generateClasses(x:MM!State) :  String = 
+	x->iterate(it; result:String =''| result
+		+ 
+'// Specific class and methods description for the node <' + it.name+'>
+	public class ' + it.name + ' extends Node {
+	
+	  @Override
+	  public void onEventStart(){
+	    //TODO : Complete with the code to execute when an event is called on this node
+	  }
+
+	  @Override
+	  public void onEventDestination(){
+	    //TODO : Complete with the code to execute when an event leads to this node
+	  }
+	
+	  @Override
+	  public void onEntering(){
+	    //TODO : Complete with the code to execute when you enter in this node
+	  }
+	
+	  @Override
+	  public void onLeaving(){
+	    //TODO : Complete with the code to execute when you leave this node
+	  }
+	
+	}\n\n'		
+		
+		)
+		;
+
+--Generation de la classe application
+helper context MM!Region def : generateApplicationClass(x:MM!State) :  String =
+	'public class Application{
+
+  public static void main(String[] args){
+    // Graph initialization
+    Graph graph = new Graph();
+
+    // Nodes initionazation and adding to the graph\n'
+	+ x->iterate(it; result:String =''| result
+		+ it.name
+		+ ' '
+		+ it.name.toLowerCase()
+		+ ' = new '
+		+ it.name
+		+'();\n'
+		+ 'graph.addNode('
+		+ it.name.toLowerCase()
+		+ ');\n\n'
+	);
+
+--Generation du noeud initial du graphe
+helper context MM!Region def : generateInitial(x:MM!Pseudostate, trans:MM!Transition, states:MM!State) :  String =
+	'// Set starting nodes of the graph\n'
+	+
+	x->iterate(it; result: String = ''|result
+		+trans->iterate(its; results: String = ''|results
+			+''
+			+ if(its.source=it) then 
+				states->select(a|a=its.target)->iterate(itp; resultp: String = ''|resultp
+					+'graph.setStartingNode('
+					+ itp.name
+					+ ');\n\n'
+					)
+			else '' 
+			endif
+		)
+	);
+
+--Generation du noeud final du graphe
+helper context MM!Region def : generateFinal(x:MM!FinalState, trans:MM!Transition, states:MM!State) :  String =
+	'// Set ending nodes of the graph\n'
+	+
+	x->iterate(it; result: String = ''|result
+		+trans->iterate(its; results: String = ''|results
+			+''
+			+ if(its.target=it) then 
+				states->select(a|a=its.source)->iterate(itp; resultp: String = ''|resultp
+					+'graph.setEndingNode('
+					+ itp.name
+					+ ');\n\n'
+					)
+			else '' 
+			endif
+		)
+	);
+		
+
+
+--Generation des transitions du graphe
+helper context MM!Region def :  generateTransitions(x:MM!Transition) : String = 
+	'//Set the transitions\n'
+	+
+	x->iterate(it; result: String = ''|result
+		+ '' + 
+		if(it.toString()<>'OclUndefined') then 
+			if(it.source.oclIsTypeOf(MM!Pseudostate)=false) then
+				if(it.target.oclIsTypeOf(MM!FinalState)=false) then
+    				'graph.addSwitch('
+    				+it.source.name
+					+', '
+					+it.target.name
+					+', "'
+					+it.name
+					+'");\n'
+				else '' 
+				endif
+			else '' 
+			endif
+		else '' 
+		endif
+	);
+			

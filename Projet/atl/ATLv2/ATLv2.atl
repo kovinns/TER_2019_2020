@@ -1,0 +1,268 @@
+query Script = MM!Model->allInstances()->asSequence().first().GenerateJavaCode().writeTo('/ATLv2/JavaTargetModels/main.java');
+
+--Generation du code du modele			
+helper context MM!Model def : GenerateJavaCode() : String = 
+	  let  stateMachines : MM!StateMachine = MM!StateMachine.allInstances() in
+	     '/* \n'+
+		 ' * Automatically generated Java code with ATL \n'+
+		 ' */ \n'+
+		 stateMachines->iterate(it; Class_Code: String = ''|Class_Code 
+	        + it.getGeneralRegion(it))
+          ;
+
+--Pour chaque diagramme du modele, on genere le code
+helper context MM!StateMachine def : getGeneralRegion(x:MM!StateMachine) : String =
+	let regions : MM!Region = x.region->select(a|a.oclIsTypeOf(MM!Region)) in 
+		 regions->iterate(it; result: String = ''|result 
+	        + it.generateCode(it))
+          ;
+
+--Methode recuperant toutes les informations necessaires à la generation de code et appelant les methodes en passant en parmaetre les informations utiles (etats, transitions,...)
+helper context MM!Region def : generateCode(x:MM!Region) : String = 
+	let stateRegion : MM!State = x.subvertex->select(a|a.oclIsTypeOf(MM!State)) in
+	let transitions : MM!Transition = x.transition->select(a|a.oclIsTypeOf(MM!Transition)) in 
+	let initials : MM!Pseudostate = x.subvertex->select(a|a.oclIsTypeOf(MM!Pseudostate)) in
+	let finals : MM!FinalState = x.subvertex->select(a|a.oclIsTypeOf(MM!FinalState)) in
+	
+		' ' 
+		+ x.generateFirstTransition(transitions)
+		+ x.generateClasses(stateRegion->first())
+		+ x.generateGuards()
+		+ x.generateMetadata()
+		+ x.generateBeginningOfApplication()
+		+'// Main states creation\n'
+		+ x.generateInitialState(initials)
+		+ x.generateFinalState(finals)
+		+ x.generateState(stateRegion)
+		+ x.generateAllStates(stateRegion->first())
+		+ x.generateAllTransitions()
+		+     
+'\n	//Run the statechart
+    MyMetadata myMetadata = new MyMetadata();
+    chart.start(myMetadata);
+	}
+}'
+	;
+	
+--Generation de la classe pour la transition en dehors de l'etat principal
+helper context MM!Region def :  generateFirstTransition(x:MM!Transition) : String = 
+	x->iterate(it; result: String = ''|result
+		+ if(it.name.toString()<>'OclUndefined') then 
+'\n// Event corresponding to "' + it.name + '"
+	 public class '+it.name+'Event extends Event {
+			public '+it.name+'Event() {
+	 			super("'+it.name+'");
+	 	}
+	}
+'
+		else '' 
+		endif
+	);
+
+--Recuperation de la region à l'interieur de l'etat principal pour generer les classes des transitions
+helper context MM!Region def :  generateClasses(x:MM!State) : String = 
+	let region : MM!Region = x.region->select(a|a.oclIsTypeOf(MM!Region)) in 
+		region->iterate(it; result: String = ''|result
+			+x.generateCodeFromRegion(it)
+	);
+
+--Recuperation des transitions à l'interieur de la region de l'etat principal pour generer les classes des transitions
+helper context MM!State def :  generateCodeFromRegion(x:MM!Region) : String = 
+	let transitions : MM!Transition = x.transition->select(a|a.oclIsTypeOf(MM!Transition)) in
+	let pseudoStates : MM!Pseudostate = x.subvertex->select(a|a.oclIsTypeOf(MM!Pseudostate)) in
+			x.generateTransitions(transitions,pseudoStates)
+			+x.generateActionClasses()
+			
+	;
+
+--Generation des classes d'evenement en fonction du nom des transitions
+helper context MM!Region def : generateTransitions(x:MM!Transition, y:MM!Pseudostate) : String = 
+		x->iterate(it; result: String = ''|result
+		+if(it.name.toString()<>'OclUndefined') then 
+			if(it.source.oclIsTypeOf(MM!Pseudostate)=false) then
+'\n// Event corresponding to "' + it.name + '"
+	 public class '+it.name+'Event extends Event {
+			public '+it.name+'Event() {
+	 			super("'+it.name+'");
+	 	}
+	}
+'
+			else '' 
+			endif
+		else ''
+		endif
+		);
+
+--Generation des classes d'action, pour l'instant sans dépendance avec le diagramme
+-- A reprendre
+helper context MM!Region def : generateActionClasses() : String = 
+		'
+// Action creation
+
+// Action corresponding to "setSpeed(...)"
+public class SetSpeed extends Action {
+  private int value;
+
+  public void SetSpeed(int value) {
+    this.value = value;
+  }
+
+  public void execute(Metadata data, Parameter parameter) {
+    //TODO: complete this function
+  }
+}
+
+// Action corresponding to "increaseSpeed()"
+public class IncreaseSpeed extends Action {
+  public void execute(Metadata data, Parameter parameter) {
+    //TODO: complete this function
+  }
+}
+
+// Action corresponding to "decreaseSpeed()"
+public class DecreaseSpeed extends Action {
+  public void execute(Metadata data, Parameter parameter) {
+    //TODO: complete this function
+  }
+}
+
+// Action corresponding to "rotateleft()"
+public class Rotateleft extends Action {
+  public void execute(Metadata data, Parameter parameter) {
+    //TODO: complete this function
+  }
+}
+
+// Action corresponding to "rotateright()"
+public class Rotateright extends Action {
+  public void execute(Metadata data, Parameter parameter) {
+    //TODO: complete this function
+  }
+}
+
+// Action corresponding to "shutdown()"
+public class Shutdown extends Action {
+  public void execute(Metadata data, Parameter parameter) {
+    //TODO: complete this function
+  }
+}
+		';
+	
+--Generation des classes de guard, pour l'instant sans dépendance avec le diagramme
+-- A reprendre
+helper context MM!Region def : generateGuards() : String = 
+'// Guard creation
+
+// Guard corresponding to "SpeedEquals(...)"
+public class SpeedEquals extends Guard {
+  private int value;
+
+  public SpeedEquals(int value) {
+   this.value = value;
+  }
+
+  public boolean check(Metadata data, Parameter parameter) {
+    //TODO: complete this function
+  }
+}';
+
+--Generation de la classe de metadata
+helper context MM!Region def : generateMetadata() : String = 
+'// Metadata creation
+public class MyMetadata extends Metadata {
+  //TODO: add variables used in functions
+}'
+;
+
+--Gegenration du debut de la classe application
+helper context MM!Region def : generateBeginningOfApplication() : String = 
+'\n\n// Main Application
+public class Application{
+
+  public static void main(String[] args){
+
+    // Statechart initialisation
+    Statechart statechart = new Statechart();'
+;
+
+--Generation dans la classe application de la creation de l'etat initial
+helper context MM!Region def :  generateInitialState(x:MM!Pseudostate) : String = 
+	x->iterate(it; result: String = ''|result
+		+'	PseudoState '+it.name.toLowerCase()+'State = new PseudoState("'+it.name+'", statechart, PseudoState.pseudostate_start);\n'
+	);
+
+--Generation dans la classe application de la creation de l'etat final
+helper context MM!Region def :  generateFinalState(x:MM!FinalState) : String = 
+	x->iterate(it; result: String = ''|result
+		+'	FinalState '+it.name.toLowerCase()+'State = new FinalState("'+it.name+'", statechart);\n'
+	);
+
+--Generation dans la classe application de la creation de l'etat principal
+helper context MM!Region def :  generateState(x:MM!State) : String = 
+	x->iterate(it; result: String = ''|result
+		+'	State '+it.name.toLowerCase()+'State = new State("'+it.name+'", statechart);\n'
+	);
+
+--Recuperation des sous-etats imbriqués dans l'état principal
+helper context MM!Region def :  generateAllStates(x:MM!State) : String = 
+	let region : MM!Region = x.region->select(a|a.oclIsTypeOf(MM!Region)) in 
+		region->iterate(it; result: String = ''|result
+			+x.generateStatesCode(it)
+	);
+
+--Recuperation du type des sous-etats imbriqués dans l'état principal et appel de leur méthode respective
+helper context MM!State def :  generateStatesCode(x:MM!Region) : String = 
+	let states : MM!State = x.subvertex->select(a|a.oclIsTypeOf(MM!State)) in
+	let pseudoStates : MM!Pseudostate = x.subvertex->select(a|a.oclIsTypeOf(MM!Pseudostate)) in
+		'\n    // Initial states creation		\n'
+		+ x.generateNormalStates(states)
+		+ x.generatePseudoStates(pseudoStates)	
+	;
+
+--Génération du code des etats imbriqués dans l'état principal
+helper context MM!Region def : generateNormalStates(x:MM!State) : String = 
+		x->iterate(it; result: String = ''|result
+		+'    State '+it.name.toLowerCase()+'State = new State("'+it.name+'", initialState);\n'
+		);
+
+--Génération du code des pseudo etats imbriqués dans l'état principal
+helper context MM!Region def : generatePseudoStates(x:MM!State) : String = 
+		x->iterate(it; result: String = ''|result
+		+'    PseudoState '+it.name.toLowerCase()+'PseudoState = new State("'+it.name+'", initialState);\n'
+		);
+
+--Generation des transitions du graphe, pour l'instant sans dependance avec le diagramme
+--A reprendre
+helper context MM!Region def : generateAllTransitions() : String = 
+		'\n    // Transitions from state "Start"
+    new Transition(startState, stoppedState);
+
+    // Transitions from state "Initial"
+    new Transition(initialState, stoppedState, new ShutdownEvent(), new Shutdown());
+
+    // Transitions from state "Stopped"
+    new Transition(stoppedState, moveFowardState, new ForwardEvent(), new SetSpeed(1));
+    new Transition(stoppedState, moveBackwardState, new BackwardEvent(), new SetSpeed(-1));
+
+    // Transitions from state "MoveFoward"
+    new Transition(moveFowardState, moveFowardState, new TurnLeftEvent(), new Rotateleft());
+    new Transition(moveFowardState, moveFowardState, new TurnRightEvent(), new Rotateright());
+    new Transition(moveFowardState, moveFowardState, new Accelerate(), new IncreaseSpeed());
+    new Transition(moveFowardState, forwardJoinState, new SolwdownEvent(), new DecreaseSpeed());
+
+    // Transitions from state "MoveBackward"
+    new Transition(moveBackwardState, moveBackwardState, new TurnLeftEvent(), new Rotateleft());
+    new Transition(moveBackwardState, moveBackwardState, new TurnRightEvent(), new Rotateright());
+    new Transition(moveBackwardState, moveBackwardState, new Accelerate(), new DecreaseSpeed());
+    new Transition(moveBackwardState, backwardJoinState, new SolwdownEvent(), new IncreaseSpeed());
+
+    // Transitions from state "forwardJoinState"
+    new Transition(forwardJoinState, stoppedState, new SpeedEquals(0));
+    new Transition(forwardJoinState, moveFowardState);
+
+    // Transitions from state "backwardJoinState"
+    new Transition(backwardJoinState, stoppedState, new SpeedEquals(0));
+    new Transition(backwardJoinState, moveBackwardState);\n'
+;
+
+			
