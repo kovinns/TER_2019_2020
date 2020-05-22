@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Rover Initialisation}
+
+\author{Clement LEBOUIS, Soline LECOMTE, Vincent KOWALSKI}
+
+\date{January 2020}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document will explain how to initialize the LEGO MINDSTORMS EV3 used in this project.
+All manipulation will be done on Windows 10, and the interface used is from january 2020.
+
+\section{Eclipse}
+
+Tha Java program is run on Eclipse to send instructions to the rover. You can install Eclipse from this URL :
+https://www.eclipse.org/downloads/
+
+After this, you will have to install the LeJOS plugin, which is not (currently) available on market place.
+In order to do so, go to "Help" -> "Install New Software" -> "Add".
+In the new window, enter :
+Name : leJOS EV3
+Location :  http://lejos.sourceforge.net/tools/eclipse/plugin/ev3
+And click on "Add".
+
+Select "leJOS EV3 Support" in the list and apply modifications.
+
+For the Java code you can use, for exemple, this one :
+https://github.com/FrapperColin/2017-2018/tree/master/ProjectRileyRoverLejos/ProjectRileyRover
+
+\section{LeJOS EV3}
+
+To communicate between the computer and the rover, it is also necessary to intall the LeJOS EV3 software.
+You can download it at this adress :
+https://sourceforge.net/projects/ev3.lejos.p/
+
+Before starting installation, make sure you have java JDK 1.8 installed.
+You can download it at this adress :
+https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+Then, start your installation : you can follow the quick installation below or the detailed installation later.
+
+Quick installation :
+
+Click on "Next"
+Select your Java JDK 1.8 main directory and click "Next"
+Click on "Next" -> "Next" -> "Next" -> "Next" -> "Install"
+After installation click on "Finish"
+
+Detailed installation :
+
+Click on "Next"
+Select your Java JDK 1.8 main directory and click "Next"
+Chose where to install software and click "Next"
+Chose all additional files to install (none of them is needed for this project, the choice is up to you) and click "Next"
+If you want to install additional files, choses where to install them, and click "Next"
+Indicate the start menu folder name. If you don't want any, click on the checkbox, then click on "Next"
+Click on "Install" and after installation click on "Finish".
+
+\section{SD card configuration}
+
+After the installation, the EV3 SD Card Creator should have been launched.
+
+Start by selecting your SD card with "Select SD drive:"
+Then, click on "Click the link to download the EV3 Oracle JRE." to download the JRE to install on the SD card.
+Make sure to download the file with an name starting by ejre.... If you take the ejdk... file it will not be recognized.
+Click on "JRE" and select the file to download
+Click on "Create"
+After installation, you can safely eject your SD card.
+
+\end{document}
